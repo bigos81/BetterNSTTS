@@ -1,0 +1,10 @@
+## Title: Better Northen Sky TTS handler
+## Interface: 120000, 120001
+## Version: 0.1
+## Author: bigos
+## Notes: A hook over Northen Sky Raid Tools allowing for replacing TTS calls with plaing appropriate ogg file (removing the necessity of using TTS)
+## RequiredDeps: NorthernSkyRaidTools
+## SavedVariables:
+## IconTexture: Interface\AddOns\BetterNSTTS\Media\Logo.png
+
+main.lua
