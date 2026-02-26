@@ -6,12 +6,12 @@ NSAPI.TTS = function(arg1, arg2)
     return better_tts(arg1, arg2)
 end
 
-function better_tts(arg1, arg2)
+local function better_tts(arg1, arg2)
     spell = strlower(tostring(arg2))
     play_ogg(spell)
 end
 
-function play_ogg(spell)
+local function play_ogg(spell)
     if (string.find(spell,'divine hymn')) then
         PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\divine-hymn1.ogg", "Master")
     elseif (string.find(spell, 'halo')) then
