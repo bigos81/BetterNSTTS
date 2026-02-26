@@ -43,7 +43,7 @@ It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.
 5. You should hear either fallback or your .ogg you provided in the code
 6. If you hear normal TTS triggering, the addon did not load at all or there was an error
 7. User BugSac and BugGrabber to figure out what's wrong
-8. Keep in mind that playing non-existent .ogg file result in silent failure with no error message
+8. Keep in mind that playing non-existent .ogg file results in silent failure with no error message
 
 # Final thoughts
 I've written this in couple of hours with no prior LUA experience, guided by NSRT author
