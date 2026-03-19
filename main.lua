@@ -6,12 +6,12 @@ NSAPI.TTS = function(arg1, arg2)
     return better_tts(arg1, arg2)
 end
 
-local function better_tts(arg1, arg2)
+function better_tts(arg1, arg2)
     spell = strlower(tostring(arg2))
     play_ogg(spell)
 end
 
-local function play_ogg(spell)
+function play_ogg(spell)
     if (string.find(spell,'divine hymn')) then
         PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\divine-hymn1.ogg", "Master")
     elseif (string.find(spell, 'halo')) then
@@ -24,6 +24,12 @@ local function play_ogg(spell)
         PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\apotheosis1.ogg", "Master")
     elseif (string.find(spell, 'power infusion')) then
         PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\Pi.ogg", "Master")
+    elseif (string.find(spell, '1')) then
+        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\1.ogg", "Master")
+    elseif (string.find(spell, '2')) then
+        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\2.ogg", "Master")
+    elseif (string.find(spell, '3')) then
+        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\3.ogg", "Master")
     else
         --fallback
         print('Unknown spell requested: '..spell)
