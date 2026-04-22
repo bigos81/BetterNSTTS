@@ -13,3 +13,7 @@ jobs:
         with:
           files: BetterNSTTS.toc main.lua
           dest: BetterNSTTS.zip
+      - uses: actions/upload-artifact@v1.1
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}/BetterNSTTS.zip
