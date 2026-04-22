@@ -1,6 +1,6 @@
 ## Title: Better Northen Sky TTS handler
 ## Interface: 120001, 120005, 120000
-## Version: 0.1
+## Version: 0.2
 ## Author: bigos
 ## Notes: A hook over Northen Sky Raid Tools allowing for replacing TTS calls with plaing appropriate ogg file (removing the necessity of using TTS)
 ## RequiredDeps: NorthernSkyRaidTools
