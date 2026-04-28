@@ -40,8 +40,8 @@ It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.
 8. Keep in mind that playing non-existent .ogg file results in silent failure with no error message
 
 # How do I add my own words and sounds?
-1. Create a sound file per word you want to add (I've used https://en.text-to-speech.online/) and converted the mp3 into 
-ogg using https://flathub.org/en/apps/org.soundconverter.SoundConverter
+1. Create a sound file per word you want to add (I've used https://en.text-to-speech.online/ voice: Jenny - US) and 
+converted the mp3 into ogg using https://flathub.org/en/apps/org.soundconverter.SoundConverter
 2. Put the file into ```media``` folder, its should be lowercase
 3. Either use ```build_sounds.sh``` script to populate ```sounds.lua``` containing available sounds or add it yourself
 following convention in the file
