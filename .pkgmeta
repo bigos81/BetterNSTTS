@@ -1,0 +1,8 @@
+package-as: BetterNSTTS
+
+ignore:
+  - README.md
+  - .gitignore
+
+move-folders:
+  BetterNSTTS/BetterNSTTS: BetterNSTTS
