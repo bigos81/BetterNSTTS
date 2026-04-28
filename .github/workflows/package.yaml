@@ -10,5 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          retch-depth: 0
       - name: Create Package
         uses: BigWigsMods/packager@master
