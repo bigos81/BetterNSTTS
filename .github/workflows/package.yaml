@@ -1,0 +1,14 @@
+name: Package Addon
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ '*' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Package
+        uses: BigWigsMods/packager@master
