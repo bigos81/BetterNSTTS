@@ -1,9 +1,8 @@
 name: Package Addon
 
 on:
-  push:
+  release:
     branches: [ main ]
-    tags: [ 'release*' ]
 
 jobs:
   build:
