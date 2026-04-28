@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Debug
-        run: tree
       - name: Create Package
         uses: BigWigsMods/packager@master
+      - name: Debug
+        run: tree
