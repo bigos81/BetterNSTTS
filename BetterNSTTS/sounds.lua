@@ -1,7 +1,5 @@
 BetterNSTTS = {}
 
--- contains all the supported sounds (and file names of the .ogg files in media folder)
--- as wow LUA prevents file existence checking, use build_sounds.sh script to auto generate data from folder
 BetterNSTTS.BNSTTS_SOUNDS =  {
 ["fortitude"] = true,
 ["1"] = true,
