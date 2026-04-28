@@ -63,7 +63,7 @@ Great, either post a PR or contact me directly via GitHub.
 
 # I'd like to thank you for this work
 Great! You can write me a nice private message or if you feel generous you can buy me a coffe using the button below.
-(NOTE: only donate if you DO HAVE stable income)
+(NOTE: only donate if you DO HAVE spare income, I don't live of my GitHub donations, so it's really just a coffe for me)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://www.buymeacoffee.com/bigos81)
 
