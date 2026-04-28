@@ -1,6 +1,5 @@
 print ('BetterNSTTS loaded');
 local BNSTTS_SOUNDS = BetterNSTTS.BNSTTS_SOUNDS
-DevTools_Dump(BNSTTS_SOUNDS)
 
 local ns_tts = NSAPI.TTS
 
