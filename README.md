@@ -55,7 +55,7 @@ following convention in the file
 Yes, go ahead, please remember to include the .ogg file (preferably following the same voice I've used for consistency)
 and update ```sounds.ogg``` file.
 
-# Can I post my personal exclisions via pull request?
+# Can I post my personal exclusions via pull request?
 Sure, if those would be sensible exclusions I see on issue with that.
 
 # I have an idea on how to extend the add-on
