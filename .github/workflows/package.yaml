@@ -3,6 +3,7 @@ name: Package Addon
 on:
   release:
     branches: [ main ]
+    types: [published]
 
 jobs:
   build:
