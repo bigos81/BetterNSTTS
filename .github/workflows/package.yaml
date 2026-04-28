@@ -15,4 +15,6 @@ jobs:
       - name: Create Package
         uses: BigWigsMods/packager@master
       - name: Debug
-        run: tree
+        run: |
+          cd .release
+          tree
