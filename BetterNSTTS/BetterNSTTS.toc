@@ -6,4 +6,7 @@
 ## RequiredDeps: NorthernSkyRaidTools
 ## SavedVariables:
 
+sounds.lua
+ignore.lua
 main.lua
+

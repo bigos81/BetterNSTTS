@@ -1,57 +1,51 @@
-print ('BNSTTS loaded');
+print ('BetterNSTTS loaded');
+local BNSTTS_SOUNDS = BetterNSTTS.BNSTTS_SOUNDS
+DevTools_Dump(BNSTTS_SOUNDS)
 
 local ns_tts = NSAPI.TTS
 
+-- lookup sound
+function sound_exists(word)
+    return BetterNSTTS.BNSTTS_SOUNDS[word]
+end
+
+function words_contain_ignore(words)
+    for k,v in pairs(words) do
+        if BetterNSTTS.BNSTTS_IGNORE[v] then
+            return true
+        end
+    end
+
+    return false
+end
+
+-- override NS TTS function
 NSAPI.TTS = function(arg1, arg2)
     return better_tts(arg1, arg2)
 end
 
+-- override logic go here
 function better_tts(arg1, arg2)
-    spell = strlower(tostring(arg2))
-    play_ogg(spell)
+    local spell = strlower(tostring(arg2))
+    play_words(spell)
 end
 
-function play_ogg(spell)
-    if (string.find(spell,'divine hymn')) then
-        PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\divine-hymn1.ogg", "Master")
-    elseif (string.find(spell, 'halo')) then
-        PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\halo1.ogg", "Master")
-    elseif (string.find(spell, 'guardian spirit')) then
-        PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Guardian Spirit.ogg", "Master")
-    elseif (string.find(spell, 'personal')) then
-            PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Personal.ogg", "Master")
-    elseif (string.find(spell, 'apotheosis')) then
-        PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\apotheosis1.ogg", "Master")
-    elseif (string.find(spell, 'power infusion')) then
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\Pi.ogg", "Master")
-    elseif (string.find(spell, '1')) then
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\1.ogg", "Master")
-    elseif (string.find(spell, '2')) then
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\2.ogg", "Master")
-    elseif (string.find(spell, '3')) then
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\3.ogg", "Master")
-    elseif (string.find(spell, 'explosion')) then
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\AoE.ogg", "Master")
-    elseif (string.find(spell, 'ironbark')) then
-        PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Ironbark.ogg", "Master")
-    elseif (string.find(spell, 'mass dispel')) then
-        PlaySoundFile("Interface\\AddOns\\SharedMedia_MyMedia\\sound\\mass-dispel.ogg", "Master")
-    elseif (string.find(spell, "cc adds")) then
-        PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\CC.ogg", "Master")
-        C_Timer.After(0.8, function()
-            PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Adds.ogg", "Master")
-            end)
-    elseif (string.find(spell, "don't soak")) then
-        PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Don't.ogg", "Master")
-        C_Timer.After(0.6, function()
-            PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Soak.ogg", "Master")
-            end)
-    elseif (string.find(spell, 'soak')) then
-        PlaySoundFile("Interface\\AddOns\\EnhanceQoLSharedMedia\\Sounds\\Voiceovers\\Soak.ogg", "Master")
-    else
-        --fallback
-        print('Unknown spell requested: '..spell)
-        PlaySoundFile("Interface\\AddOns\\Wildu_SharedMedia\\Media\\Sound\\Jenny\\Healcd.ogg", "Master")
+function play_words(words)
+    local chunks = { strsplit(" ", words) }
+    if words_contain_ignore(chunks) then
+        return
+    end
+    for k,v in pairs(chunks) do
+        if sound_exists(v) then
+            play_single_word(k-1, v)
+        else
+            print("BNSTTS: Unsupported sound: "..v)
+        end
     end
 end
 
+function play_single_word(idx, word)
+    C_Timer.After(idx, function()
+        PlaySoundFile("Interface\\AddOns\\BetterNSTTS\\media\\"..word..".ogg", "Master")
+        end)
+end

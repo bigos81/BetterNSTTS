@@ -3,6 +3,7 @@ package-as: BetterNSTTS
 ignore:
   - README.md
   - .gitignore
+  - changelog.md
 
 move-folders:
   BetterNSTTS/BetterNSTTS: BetterNSTTS
