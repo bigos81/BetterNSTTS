@@ -32,9 +32,7 @@ end
 -- estimate how long would a given word play out in seconds
 function estimate_word_delay(word)
     len = strlen(word)
-    if len < 3 then
-        return 0.2
-    elseif len < 6 then
+    if len < 6 then
         return 0.5
     elseif len < 11 then
         return 1

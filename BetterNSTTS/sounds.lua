@@ -87,6 +87,9 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 ["wind"] = true,
 ["wrath"] = true,
 ["yu'lon"] = true,
-["zephyr"] = true,
 ["zone"] = true,
+["zephyr"] = true,
+["bait"] = true,
+["beams"] = true,
+["orbs"] = true,
 }
