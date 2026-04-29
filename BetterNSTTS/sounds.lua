@@ -92,4 +92,13 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 ["bait"] = true,
 ["beams"] = true,
 ["orbs"] = true,
+["breath"] = true,
+["gloom"] = true,
+["go"] = true,
+["group"] = true,
+["knock"] = true,
+["spread"] = true,
+["star"] = true,
+["tether"] = true,
+["to"] = true,
 }

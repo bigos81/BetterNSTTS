@@ -18,10 +18,25 @@ function sound_exists(word)
     return BetterNSTTS.BNSTTS_SOUNDS[word]
 end
 
+-- checks whether given word should be ignored
+function word_ignored(word)
+    if word == nil then
+        return true
+    end
+
+    trimmed = string.gsub(word, " ", "") --remove white spaces
+    res = BetterNSTTS.BNSTTS_IGNORE_WORDS[word]
+    if res then
+        return true
+    end
+
+    return false
+end
+
 -- check whether whole sentence should not be ignored
 function words_contain_ignore(words)
     for k,v in pairs(words) do
-        if BetterNSTTS.BNSTTS_IGNORE[v] then
+        if BetterNSTTS.BNSTTS_IGNORE_GLOBAL[v] then
             return true
         end
     end
@@ -53,7 +68,9 @@ function play_words(words)
     end
     local delay = 0.0
     for k,v in pairs(chunks) do
-        if sound_exists(v) then
+        if word_ignored(v) then
+            -- nop
+        elseif sound_exists(v) then
             play_single_word(delay, v)
             delay = delay + estimate_word_delay(v)
         else
