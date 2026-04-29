@@ -1,4 +1,6 @@
-<img width="320" alt="bnstts" src="https://github.com/user-attachments/assets/5737b9d7-13da-4b1d-a62b-407a4904d14b" />
+<p align="center">
+  <img width="320" alt="bnstts" src="https://github.com/user-attachments/assets/5737b9d7-13da-4b1d-a62b-407a4904d14b" />
+</p>
 
 
 # What is this?
