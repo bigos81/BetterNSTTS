@@ -69,7 +69,8 @@ and update ```sounds.ogg``` file.
 Sure, if those would be sensible exclusions I see on issue with that.
 
 # I have an idea on how to extend the add-on
-Great, either post a PR or contact me directly via GitHub. This includes adding new words for the add-on completness.
+Great, either post a PR or contact me directly via GitHub or discord (https://discord.gg/SMPHz5CJRX). 
+This includes adding new words for the add-on completness.
 
 # I'd like to thank you for this work
 Great! You can write me a nice private message or if you feel generous you can buy me a coffe using the button below.
