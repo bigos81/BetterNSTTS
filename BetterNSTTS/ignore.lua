@@ -7,7 +7,7 @@ BetterNSTTS.BNSTTS_IGNORE_GLOBAL =  {
 BetterNSTTS.BNSTTS_IGNORE_WORDS = {
     [""] = true,
     [" "] = true,
-    ["-"] = true
-    ["--"] = true
+    ["-"] = true,
+    ["--"] = true,
     ["---"] = true
 }
