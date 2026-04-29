@@ -1,3 +1,8 @@
+<p align="center">
+  <img width="320" alt="bnstts" src="https://github.com/user-attachments/assets/5737b9d7-13da-4b1d-a62b-407a4904d14b" />
+</p>
+
+
 # What is this?
 A small "add-on" for World of Warcraft game, that "hacks" Northern Sky Raid Tools 
 (https://www.curseforge.com/wow/addons/northern-sky-raid-tools) addon, and replaces TTS
@@ -26,7 +31,10 @@ standard output (chat frame print).
 # Installation
 I guess if you are this far you know a thing or two about WOW addons, so I guess you know that the addon code 
 needs to go to WoW addon folder. Just dump those files into ```_retail_/Interface/Addons``` under ```BetterNSTTS``` 
-folder (as in the archive).   
+folder (as in the archive).
+
+Alternatively use the CurseForge add-on page: https://www.curseforge.com/wow/addons/better-northern-sky-tts 
+(currently under review, so if you hit 404 - it's not yet approved).
 
 # How to test it?
 It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.

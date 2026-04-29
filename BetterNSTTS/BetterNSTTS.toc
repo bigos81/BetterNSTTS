@@ -1,4 +1,4 @@
-## Title: Better Northen Sky TTS handler
+## Title: Better Northen Sky TTS
 ## Interface: 120001, 120005, 120000
 ## Version: 1.0
 ## Author: bigos
