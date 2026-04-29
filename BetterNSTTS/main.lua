@@ -38,9 +38,11 @@ function play_words(words)
     if words_contain_ignore(chunks) then
         return
     end
+    local idx = 0
     for k,v in pairs(chunks) do
         if sound_exists(v) then
-            play_single_word(k-1, v)
+            play_single_word(idx, v)
+            idx = idx + 1
         else
             print("BNSTTS: Unsupported sound: "..v)
         end
