@@ -41,8 +41,9 @@ It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.
 1. Run WoW, make sure you have Northern Sky Raid Tools and this addon loaded
 2. /ns to bring up NSRT main panel
 3. Make sure you have TTS option enabled
-4. Type in the edit box the sentence
-5. You should hear all available words being played from ```media``` folder, and information regarding missing files
+4. Type in the edit box the sentence to be read and press enter
+5. You should hear all matched available words being played from ```media``` folder, and information regarding missing
+files if any
 6. If you hear normal TTS triggering, the addon did not load at all or there was an error
 7. User BugSac and BugGrabber to figure out what's wrong
 8. Keep in mind that playing non-existent .ogg file results in silent failure with no error message
