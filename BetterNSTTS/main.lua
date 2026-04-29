@@ -30,6 +30,10 @@ function better_tts(arg1, arg2)
 end
 
 function play_words(words)
+    -- cleanup
+    words = string.gsub(words, ":", "")
+    words = string.gsub(words, "{", "")
+    words = string.gsub(words, "}", "")
     local chunks = { strsplit(" ", words) }
     if words_contain_ignore(chunks) then
         return
