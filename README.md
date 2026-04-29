@@ -27,7 +27,8 @@ standard output (chat frame print).
 I guess if you are this far you know a thing or two about WOW addons, so I guess you know that the addon code 
 needs to go to WoW addon folder. Just dump those files into ```_retail_/Interface/Addons``` under ```BetterNSTTS``` 
 folder (as in the archive).
-Alternatively use the CurseForge: https://www.curseforge.com/wow/addons/better-northern-sky-tts
+
+Alternatively use the CurseForge add-on page: https://www.curseforge.com/wow/addons/better-northern-sky-tts
 
 # How to test it?
 It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.
