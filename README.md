@@ -6,8 +6,8 @@
 # What is this?
 A small "add-on" for World of Warcraft game, that "hacks" Northern Sky Raid Tools 
 (https://www.curseforge.com/wow/addons/northern-sky-raid-tools) addon, and replaces TTS
-(Text To Speech) with a small hardcoded(!) lookup for an appropriate .ogg file to play
-instead of executing WoWVoiceProxy.exe to read the message.
+(Text To Speech) with a small lookup for an appropriate .ogg file to play instead of executing
+WoWVoiceProxy.exe to read the message.
 
 # Why?
 Well ... World of Warcraft on Linux struggles with TTS resulting with WoWVoiceProxy.exe 
