@@ -57,7 +57,9 @@ converted the mp3 into ogg using https://flathub.org/en/apps/org.soundconverter.
 2. Put the file into ```media``` folder, its should be lowercase
 3. Either use ```build_sounds.sh``` script to populate ```sounds.lua``` containing available sounds or add it yourself
 following convention in the file
-4. /reloadui or restart WOW client - test using method mentioned above 
+4. /reloadui or restart WOW client - test using method mentioned above
+
+Or, just message me via issues tab (https://github.com/bigos81/BetterNSTTS/issues) and request addition of a word(s) you need.
 
 # Can I post my additional words via pull request? 
 Yes, go ahead, please remember to include the .ogg file (preferably following the same voice I've used for consistency)
@@ -67,7 +69,7 @@ and update ```sounds.ogg``` file.
 Sure, if those would be sensible exclusions I see on issue with that.
 
 # I have an idea on how to extend the add-on
-Great, either post a PR or contact me directly via GitHub.
+Great, either post a PR or contact me directly via GitHub. This includes adding new words for the add-on completness.
 
 # I'd like to thank you for this work
 Great! You can write me a nice private message or if you feel generous you can buy me a coffe using the button below.
