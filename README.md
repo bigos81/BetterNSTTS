@@ -34,7 +34,6 @@ needs to go to WoW addon folder. Just dump those files into ```_retail_/Interfac
 folder (as in the archive).
 
 Alternatively use the CurseForge add-on page: https://www.curseforge.com/wow/addons/better-northern-sky-tts 
-(currently under review, so if you hit 404 - it's not yet approved).
 
 # How to test it?
 It's pretty easy. NSRT has a nice feature to test TTS, and we'll use it.
