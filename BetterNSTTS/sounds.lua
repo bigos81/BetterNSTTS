@@ -111,4 +111,9 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 ["stop"] = true,
 ["vorelus"] = true,
 ["your"] = true,
+["gate"] = true,
+["give"] = true,
+["in"] = true,
+["ironbark"] = true,
+["personals"] = true,
 }
