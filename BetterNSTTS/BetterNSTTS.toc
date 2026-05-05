@@ -1,13 +1,14 @@
 ## Title: Better Northen Sky TTS
 ## Interface: 120001, 120005, 120000
-## Version: 1.8
+## Version: 2.0
 ## IconTexture: Interface\Icons\Inv_artifact_thalkielsdiscord
 ## Author: bigos
 ## Notes: A hook over Northen Sky Raid Tools allowing for replacing TTS calls with plaing appropriate ogg file (removing the necessity of using TTS)
 ## RequiredDeps: NorthernSkyRaidTools
-## SavedVariables:
+## SavedVariables: BNSTTS_CONFIG_DB
 
 sounds.lua
 ignore.lua
+confing.lua
 main.lua
 

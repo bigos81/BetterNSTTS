@@ -1,5 +1,4 @@
-print ('BetterNSTTS loaded');
-local BNSTTS_SOUNDS = BetterNSTTS.BNSTTS_SOUNDS
+local addonName, addon = ...
 
 -- override NS TTS function
 local ns_tts = NSAPI.TTS
@@ -60,8 +59,13 @@ end
 function play_words(words)
     -- cleanup
     words = string.gsub(words, ":", "")
+    words = string.gsub(words, ";", "")
     words = string.gsub(words, "{", "")
     words = string.gsub(words, "}", "")
+    words = string.gsub(words, "%[", "")
+    words = string.gsub(words, "%]", "")
+    words = string.gsub(words, "%(", "")
+    words = string.gsub(words, "%)", "")
     local chunks = { strsplit(" ", words) }
     if words_contain_ignore(chunks) then
         return
@@ -74,8 +78,14 @@ function play_words(words)
             play_single_word(delay, v)
             delay = delay + estimate_word_delay(v)
         else
-            print("BNSTTS: Unsupported sound: "..v)
+            report_unsupported_sound(v)
         end
+    end
+end
+
+function report_unsupported_sound(word)
+    if BNSTTS_CONFIG_DB.show_missing_media then
+        print("BNSTTS: Unsupported sound: "..word)
     end
 end
 
