@@ -1,4 +1,18 @@
 local addonName, addon = ...
+local LibDeflate = LibStub("LibDeflate")
+
+
+QOL_NAMES_TABLE = {
+    ["FEAST"] = true,
+    ["CAULDRON"] = true,
+    ["SOULWELL"] = true,
+    ["REPAIR"] = true
+}
+
+
+----------------------------
+---- NSAPI:TTS override ----
+----------------------------
 
 -- override NS TTS function
 local ns_tts = NSAPI.TTS
@@ -11,6 +25,51 @@ function better_tts(arg1, arg2)
     local spell = strlower(tostring(arg2))
     play_words(spell)
 end
+
+----------------------------------------
+---- QOL and Ready Check event hook ----
+----------------------------------------
+
+-- detects QOL message
+function is_qol_message(message)
+    if message == nil then
+        return false
+    end
+
+    for k,v in pairs(QOL_NAMES_TABLE) do
+        if string.find(message, k) then
+            return true
+        end
+    end
+
+    return false
+end
+
+local frame = CreateFrame("Frame")
+C_ChatInfo.RegisterAddonMessagePrefix("NSI_MSG")
+C_ChatInfo.RegisterAddonMessagePrefix("NSI_WHISPER")
+
+frame:RegisterEvent("CHAT_MSG_ADDON")
+frame:RegisterEvent("READY_CHECK")
+frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sender)
+    if prefix == "NSI_MSG" or prefix == "NSI_WHISPER" then
+        -- deflate
+        local decoded = LibDeflate:DecodeForWoWAddonChannel(message)
+        local decompressed = LibDeflate:DecompressDeflate(decoded)
+        if decompressed then
+            if is_qol_message(decompressed) and BNSTTS_CONFIG_DB.qol_sound then
+                play_single_word(0, "qol_sound")
+            end
+        end
+    elseif event == "READY_CHECK" then
+        play_single_word(0, "rc_sound")
+    end
+end)
+
+
+------------------------------
+---- TTS Sound Management ----
+------------------------------
 
 -- lookup sound
 function sound_exists(word)
