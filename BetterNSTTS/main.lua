@@ -61,7 +61,7 @@ frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sende
                 play_single_word(0, "qol_sound")
             end
         end
-    elseif event == "READY_CHECK" then
+    elseif event == "READY_CHECK" and BNSTTS_CONFIG_DB.rc_sound then
         play_single_word(0, "rc_sound")
     end
 end)
