@@ -120,4 +120,8 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["qol_sound"] = true,
 	["rc_sound"] = true,
 	["morium"] = true,
+	["dark"] = true,
+	["external"] = true,
+	["gateway"] = true,
+	["light"] = true,
 }
