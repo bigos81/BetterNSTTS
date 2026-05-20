@@ -124,4 +124,5 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["external"] = true,
 	["gateway"] = true,
 	["light"] = true,
+	["void"] = true,
 }
