@@ -125,4 +125,10 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["gateway"] = true,
 	["light"] = true,
 	["void"] = true,
+	["crystal"] = true,
+	["game"] = true,
+	["glaives"] = true,
+	["grip"] = true,
+	["interrupts"] = true,
+	["memory"] = true,
 }
