@@ -131,4 +131,7 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["grip"] = true,
 	["interrupts"] = true,
 	["memory"] = true,
+	["left"] = true,
+	["on"] = true,
+	["right"] = true,
 }
