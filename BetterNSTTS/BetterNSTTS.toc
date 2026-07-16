@@ -12,6 +12,6 @@ Libs\libs.xml
 
 sounds.lua
 ignore.lua
-confing.lua
+config.lua
 main.lua
 

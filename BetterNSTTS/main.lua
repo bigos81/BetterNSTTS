@@ -1,4 +1,5 @@
-local addonName, addon = ...
+-- WoW passes (addonName, addonTable) via ... — standard pattern
+local addonName, addon = ...  -- luacheck: ignore
 local LibDeflate = LibStub("LibDeflate")
 
 
@@ -9,19 +10,24 @@ QOL_NAMES_TABLE = {
     ["REPAIR"] = true
 }
 
+-- Pre-compute lowercase keywords for case-insensitive matching
+local qol_lower_keywords = {}
+for keyword in pairs(QOL_NAMES_TABLE) do
+    table.insert(qol_lower_keywords, string.lower(keyword))
+end
+
 
 ----------------------------
 ---- NSAPI:TTS override ----
 ----------------------------
 
 -- override NS TTS function
-local ns_tts = NSAPI.TTS
-NSAPI.TTS = function(arg1, arg2)
-    return better_tts(arg1, arg2)
+NSAPI.TTS = function(_, arg2)
+    return better_tts(arg2)
 end
 
 -- override logic go here
-function better_tts(arg1, arg2)
+function better_tts(arg2)
     local spell = strlower(tostring(arg2))
     play_words(spell)
 end
@@ -30,18 +36,18 @@ end
 ---- QOL and Ready Check event hook ----
 ----------------------------------------
 
--- detects QOL message
+-- detects QOL message by checking for any known keyword
 function is_qol_message(message)
-    if message == nil then
+    if not message then
         return false
     end
 
-    for k,v in pairs(QOL_NAMES_TABLE) do
-        if string.find(message, k) then
+    local lower_msg = string.lower(message)
+    for _, kw in ipairs(qol_lower_keywords) do
+        if string.find(lower_msg, kw, 1, true) then
             return true
         end
     end
-
     return false
 end
 
@@ -78,14 +84,21 @@ end
 
 -- checks whether given word should be ignored
 function word_ignored(word)
-    if word == nil then
+    if not word then
         return true
     end
 
-    trimmed = string.gsub(word, " ", "") --remove white spaces
-    res = BetterNSTTS.BNSTTS_IGNORE_WORDS[word]
-    if res then
+    -- Check hardcoded ignore list
+    if BetterNSTTS.BNSTTS_IGNORE_WORDS[word] then
         return true
+    end
+
+    -- Check user-configured exclude list (case-insensitive)
+    local lower_word = strlower(word)
+    for _, excluded in ipairs(BNSTTS_CONFIG_DB.word_excludes) do
+        if strlower(excluded) == lower_word then
+            return true
+        end
     end
 
     return false
@@ -93,7 +106,7 @@ end
 
 -- check whether whole sentence should not be ignored
 function words_contain_ignore(words)
-    for k,v in pairs(words) do
+    for _, v in ipairs(words) do
         if BetterNSTTS.BNSTTS_IGNORE_GLOBAL[v] then
             return true
         end
@@ -116,28 +129,21 @@ end
 
 -- plays list of ordered words
 function play_words(words)
-    -- cleanup
-    words = string.gsub(words, ":", "")
-    words = string.gsub(words, ";", "")
-    words = string.gsub(words, "{", "")
-    words = string.gsub(words, "}", "")
-    words = string.gsub(words, "%[", "")
-    words = string.gsub(words, "%]", "")
-    words = string.gsub(words, "%(", "")
-    words = string.gsub(words, "%)", "")
+    -- cleanup: remove brackets and punctuation in a single pass
+    words = string.gsub(words, "[;{}%[%]():]", "")
     local chunks = { strsplit(" ", words) }
     if words_contain_ignore(chunks) then
         return
     end
     local delay = 0.0
-    for k,v in pairs(chunks) do
-        if word_ignored(v) then
-            -- nop
-        elseif sound_exists(v) then
-            play_single_word(delay, v)
-            delay = delay + estimate_word_delay(v)
-        else
-            report_unsupported_sound(v)
+    for _, v in ipairs(chunks) do
+        if not word_ignored(v) then
+            if sound_exists(v) then
+                play_single_word(delay, v)
+                delay = delay + estimate_word_delay(v)
+            else
+                report_unsupported_sound(v)
+            end
         end
     end
 end
