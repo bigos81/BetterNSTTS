@@ -256,10 +256,3 @@ function RefreshWordList()
         yOffset = yOffset - 28
     end
 end
-
--- Register /bnsc command (follows standard WoW slash command pattern)
-SLASH_BNSC1 = "/bnsc"
-SLASH_BNSC2 = "/betternsttsconfig"
-SlashCmdList["BNSC"] = function(msg)
-    ShowWordExcludesPanel()
-end
