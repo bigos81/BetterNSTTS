@@ -92,7 +92,7 @@ function ShowWordExcludesPanel()
         CreateWordExcludesPanel()
     end
 
-    -- this needs to stay this way for some rearon :(
+    -- this needs to stay this way for some reason :(
     wordPanel:Hide()
     wordPanel:Show()
 
