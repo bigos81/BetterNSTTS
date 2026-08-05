@@ -137,4 +137,5 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["marker"] = true,
 	["blazes"] = true,
 	["soaks"] = true,
+	["obelisk"] = true,
 }
