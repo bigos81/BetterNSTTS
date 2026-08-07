@@ -28,7 +28,7 @@ end
 
 -- override logic go here
 function better_tts(arg2)
-    local spell = strlower(tostring(arg2))
+    local spell = string.lower(tostring(arg2))
     play_words(spell)
 end
 
@@ -94,9 +94,10 @@ function word_ignored(word)
     end
 
     -- Check user-configured exclude list (case-insensitive)
-    local lower_word = strlower(word)
-    for _, excluded in ipairs(BNSTTS_CONFIG_DB.word_excludes) do
-        if strlower(excluded) == lower_word then
+    local lower_word = string.lower(word)
+    local excludes = BNSTTS_CONFIG_DB and BNSTTS_CONFIG_DB.word_excludes
+    for _, excluded in ipairs(excludes or {}) do
+        if string.lower(excluded) == lower_word then
             return true
         end
     end
@@ -117,7 +118,7 @@ end
 
 -- estimate how long would a given word play out in seconds
 function estimate_word_delay(word)
-    len = strlen(word)
+    local len = strlen(word)
     if len < 6 then
         return 0.5
     elseif len < 11 then
