@@ -37,7 +37,7 @@ end
 ----------------------------------------
 
 -- detects QOL message by checking for any known keyword
-local function is_qol_message(message)
+function is_qol_message(message)
     if not message then
         return false
     end
@@ -78,12 +78,12 @@ end)
 ------------------------------
 
 -- lookup sound
-local function sound_exists(word)
+function sound_exists(word)
     return BetterNSTTS.BNSTTS_SOUNDS[word]
 end
 
 -- checks whether given word should be ignored
-local function word_ignored(word)
+function word_ignored(word)
     if not word then
         return true
     end
@@ -106,7 +106,7 @@ local function word_ignored(word)
 end
 
 -- check whether whole sentence should not be ignored
-local function words_contain_ignore(words)
+function words_contain_ignore(words)
     for _, v in ipairs(words) do
         if BetterNSTTS.BNSTTS_IGNORE_GLOBAL[v] then
             return true
@@ -117,7 +117,7 @@ local function words_contain_ignore(words)
 end
 
 -- estimate how long would a given word play out in seconds
-local function estimate_word_delay(word)
+function estimate_word_delay(word)
     local len = strlen(word)
     if len < 6 then
         return 0.5
@@ -129,7 +129,7 @@ local function estimate_word_delay(word)
 end
 
 -- plays list of ordered words
-local function play_words(words)
+function play_words(words)
     -- cleanup: remove brackets and punctuation in a single pass
     words = string.gsub(words, "[;{}%[%]():]", "")
     local chunks = { strsplit(" ", words) }
@@ -149,14 +149,14 @@ local function play_words(words)
     end
 end
 
-local function report_unsupported_sound(word)
+function report_unsupported_sound(word)
     if BNSTTS_CONFIG_DB.show_missing_media then
         print("BNSTTS: Unsupported sound: "..word)
     end
 end
 
 -- play single word with given delay (should start with 0)
-local function play_single_word(delay, word)
+function play_single_word(delay, word)
     C_Timer.After(delay, function()
         PlaySoundFile("Interface\\AddOns\\BetterNSTTS\\media\\"..word..".ogg", "Master")
         end)

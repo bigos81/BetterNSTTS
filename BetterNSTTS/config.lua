@@ -35,8 +35,8 @@ function configuration_init()
 end
 
 -- build configuration panel using Settings API (follows BugSack pattern)
-local function register_configuration_panel()
-    local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
+function register_configuration_panel()
+    local category = Settings.RegisterVerticalLayoutCategory(addonName)
 
     -- === Checkbox settings (follows BugSack config.lua pattern) ===
     local missing_media_setting = Settings.RegisterAddOnSetting(
@@ -85,9 +85,8 @@ local wordInput = nil
 local wordListScrollFrame = nil
 local wordListContainer = nil
 local dynamicRowFrames = {}
-local placeholderText = nil  -- reference to the placeholder FontString
 
-local function ShowWordExcludesPanel()
+function ShowWordExcludesPanel()
     if not wordPanel then
         CreateWordExcludesPanel()
     end
@@ -100,7 +99,7 @@ local function ShowWordExcludesPanel()
     RefreshWordList()
 end
 
-local function CreateWordExcludesPanel()
+function CreateWordExcludesPanel()
     -- Create panel using ButtonFrameTemplate (same as Chattynator)
     wordPanel = CreateFrame("Frame", "BetterNSTTS_WordPanel", UIParent, "ButtonFrameTemplate")
     wordPanel:SetToplevel(true)
@@ -221,7 +220,7 @@ local function CreateWordExcludesPanel()
     RefreshWordList()
 end
 
-local function RefreshWordList()
+function RefreshWordList()
     if not wordListContainer then return end
 
     -- Clear existing rows
