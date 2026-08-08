@@ -3,7 +3,7 @@ local addonName, addon = ...  -- luacheck: ignore
 local LibDeflate = LibStub("LibDeflate")
 
 
-QOL_NAMES_TABLE = {
+local QOL_NAMES_TABLE = {
     ["FEAST"] = true,
     ["CAULDRON"] = true,
     ["SOULWELL"] = true,
@@ -37,7 +37,7 @@ end
 ----------------------------------------
 
 -- detects QOL message by checking for any known keyword
-function is_qol_message(message)
+local function is_qol_message(message)
     if not message then
         return false
     end
@@ -78,12 +78,12 @@ end)
 ------------------------------
 
 -- lookup sound
-function sound_exists(word)
+local function sound_exists(word)
     return BetterNSTTS.BNSTTS_SOUNDS[word]
 end
 
 -- checks whether given word should be ignored
-function word_ignored(word)
+local function word_ignored(word)
     if not word then
         return true
     end
@@ -106,7 +106,7 @@ function word_ignored(word)
 end
 
 -- check whether whole sentence should not be ignored
-function words_contain_ignore(words)
+local function words_contain_ignore(words)
     for _, v in ipairs(words) do
         if BetterNSTTS.BNSTTS_IGNORE_GLOBAL[v] then
             return true
@@ -117,7 +117,7 @@ function words_contain_ignore(words)
 end
 
 -- estimate how long would a given word play out in seconds
-function estimate_word_delay(word)
+local function estimate_word_delay(word)
     local len = strlen(word)
     if len < 6 then
         return 0.5
@@ -129,7 +129,7 @@ function estimate_word_delay(word)
 end
 
 -- plays list of ordered words
-function play_words(words)
+local function play_words(words)
     -- cleanup: remove brackets and punctuation in a single pass
     words = string.gsub(words, "[;{}%[%]():]", "")
     local chunks = { strsplit(" ", words) }
@@ -149,14 +149,14 @@ function play_words(words)
     end
 end
 
-function report_unsupported_sound(word)
+local function report_unsupported_sound(word)
     if BNSTTS_CONFIG_DB.show_missing_media then
         print("BNSTTS: Unsupported sound: "..word)
     end
 end
 
 -- play single word with given delay (should start with 0)
-function play_single_word(delay, word)
+local function play_single_word(delay, word)
     C_Timer.After(delay, function()
         PlaySoundFile("Interface\\AddOns\\BetterNSTTS\\media\\"..word..".ogg", "Master")
         end)
