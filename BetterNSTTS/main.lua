@@ -17,9 +17,20 @@ for keyword in pairs(QOL_NAMES_TABLE) do
 end
 
 
-----------------------------
----- NSAPI:TTS override ----
-----------------------------
+-- resolve user-defined abbreviations (key -> value replacements)
+function BetterNSTTS.resolve_abbreviations(text)
+    if not text then return text end
+    local abbs = BNSTTS_CONFIG_DB and BNSTTS_CONFIG_DB.abbreviations or {}
+    for _, abbr in ipairs(abbs) do
+        if abbr.key and abbr.value then
+            -- case-insensitive replacement: find key, replace with value
+            if string.find(text, abbr.key, 1, true) then
+                text = string.gsub(text, abbr.key, abbr.value)
+            end
+        end
+    end
+    return text
+end
 
 -- override NS TTS function
 NSAPI.TTS = function(_, arg2)
@@ -28,7 +39,9 @@ end
 
 -- override logic go here
 function BetterNSTTS.better_tts(arg2)
-    local spell = string.lower(tostring(arg2))
+    local spell = tostring(arg2):lower()
+    -- resolve abbreviations first (key -> value replacement)
+    spell = BetterNSTTS.resolve_abbreviations(spell)
     BetterNSTTS.play_words(spell)
 end
 
