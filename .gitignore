@@ -1,4 +1,6 @@
-.idea/**
-.vscode/**
-install.sh
-lint.sh
+.**
+*.sh
+*.md
+!README.md
+!.github
+!.gitignore
