@@ -12,6 +12,7 @@ Libs\libs.xml
 
 sounds.lua
 ignore.lua
+word_excludes.lua
+abbreviations_panel.lua
 config.lua
 main.lua
-
