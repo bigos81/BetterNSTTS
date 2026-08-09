@@ -23,13 +23,13 @@ end
 
 -- override NS TTS function
 NSAPI.TTS = function(_, arg2)
-    return better_tts(arg2)
+    return BetterNSTTS.better_tts(arg2)
 end
 
 -- override logic go here
-function better_tts(arg2)
+function BetterNSTTS.better_tts(arg2)
     local spell = string.lower(tostring(arg2))
-    play_words(spell)
+    BetterNSTTS.play_words(spell)
 end
 
 ----------------------------------------
@@ -37,7 +37,7 @@ end
 ----------------------------------------
 
 -- detects QOL message by checking for any known keyword
-function is_qol_message(message)
+function BetterNSTTS.is_qol_message(message)
     if not message then
         return false
     end
@@ -61,14 +61,16 @@ frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sende
     if prefix == "NSI_MSG" or prefix == "NSI_WHISPER" then
         -- deflate
         local decoded = LibDeflate:DecodeForWoWAddonChannel(message)
-        local decompressed = LibDeflate:DecompressDeflate(decoded)
-        if decompressed then
-            if is_qol_message(decompressed) and BNSTTS_CONFIG_DB.qol_sound then
-                play_single_word(0, "qol_sound")
+        if (decoded) then
+            local decompressed = LibDeflate:DecompressDeflate(decoded)
+            if decompressed then
+                if BetterNSTTS.is_qol_message(decompressed) and BNSTTS_CONFIG_DB.qol_sound then
+                    BetterNSTTS.play_single_word(0, "qol_sound")
+                end
             end
         end
     elseif event == "READY_CHECK" and BNSTTS_CONFIG_DB.rc_sound then
-        play_single_word(0, "rc_sound")
+        BetterNSTTS.play_single_word(0, "rc_sound")
     end
 end)
 
@@ -78,12 +80,12 @@ end)
 ------------------------------
 
 -- lookup sound
-function sound_exists(word)
+function BetterNSTTS.sound_exists(word)
     return BetterNSTTS.BNSTTS_SOUNDS[word]
 end
 
 -- checks whether given word should be ignored
-function word_ignored(word)
+function BetterNSTTS.word_ignored(word)
     if not word then
         return true
     end
@@ -106,7 +108,7 @@ function word_ignored(word)
 end
 
 -- check whether whole sentence should not be ignored
-function words_contain_ignore(words)
+function BetterNSTTS.words_contain_ignore(words)
     for _, v in ipairs(words) do
         if BetterNSTTS.BNSTTS_IGNORE_GLOBAL[v] then
             return true
@@ -117,7 +119,7 @@ function words_contain_ignore(words)
 end
 
 -- estimate how long would a given word play out in seconds
-function estimate_word_delay(word)
+function BetterNSTTS.estimate_word_delay(word)
     local len = strlen(word)
     if len < 6 then
         return 0.5
@@ -129,34 +131,34 @@ function estimate_word_delay(word)
 end
 
 -- plays list of ordered words
-function play_words(words)
+function BetterNSTTS.play_words(words)
     -- cleanup: remove brackets and punctuation in a single pass
     words = string.gsub(words, "[;{}%[%]():]", "")
     local chunks = { strsplit(" ", words) }
-    if words_contain_ignore(chunks) then
+    if BetterNSTTS.words_contain_ignore(chunks) then
         return
     end
     local delay = 0.0
     for _, v in ipairs(chunks) do
-        if not word_ignored(v) then
-            if sound_exists(v) then
-                play_single_word(delay, v)
-                delay = delay + estimate_word_delay(v)
+        if not BetterNSTTS.word_ignored(v) then
+            if BetterNSTTS.sound_exists(v) then
+                BetterNSTTS.play_single_word(delay, v)
+                delay = delay + BetterNSTTS.estimate_word_delay(v)
             else
-                report_unsupported_sound(v)
+                BetterNSTTS.report_unsupported_sound(v)
             end
         end
     end
 end
 
-function report_unsupported_sound(word)
+function BetterNSTTS.report_unsupported_sound(word)
     if BNSTTS_CONFIG_DB.show_missing_media then
         print("BNSTTS: Unsupported sound: "..word)
     end
 end
 
 -- play single word with given delay (should start with 0)
-function play_single_word(delay, word)
+function BetterNSTTS.play_single_word(delay, word)
     C_Timer.After(delay, function()
         PlaySoundFile("Interface\\AddOns\\BetterNSTTS\\media\\"..word..".ogg", "Master")
         end)

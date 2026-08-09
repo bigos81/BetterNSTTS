@@ -6,12 +6,12 @@ local configFrame = CreateFrame("Frame")
 configFrame:RegisterEvent("ADDON_LOADED")
 configFrame:SetScript("OnEvent", function(self, event, name)
     if name == addonName then
-        configuration_init()
+        BetterNSTTS.configuration_init()
         print('BetterNSTTS loaded')
     end
 end)
 
-function configuration_init()
+function BetterNSTTS.configuration_init()
     -- Ensure config table exists (migration for existing saves)
     if not BNSTTS_CONFIG_DB then
         BNSTTS_CONFIG_DB = {}
@@ -31,11 +31,11 @@ function configuration_init()
         end
     end
 
-    register_configuration_panel()
+    BetterNSTTS.register_configuration_panel()
 end
 
 -- build configuration panel using Settings API (follows BugSack pattern)
-function register_configuration_panel()
+function BetterNSTTS.register_configuration_panel()
     local category = Settings.RegisterVerticalLayoutCategory(addonName)
 
     -- === Checkbox settings (follows BugSack config.lua pattern) ===
@@ -92,8 +92,10 @@ function ShowWordExcludesPanel()
     end
 
     -- this needs to stay this way for some reason :(
-    wordPanel:Hide()
-    wordPanel:Show()
+    if (wordPanel) then
+        wordPanel:Hide()
+        wordPanel:Show()
+    end
 
     -- Refresh the list after showing so scroll frame renders correctly
     RefreshWordList()
