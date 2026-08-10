@@ -4,18 +4,11 @@ local LibDeflate = LibStub("LibDeflate")
 
 
 local QOL_NAMES_TABLE = {
-    ["FEAST"] = true,
-    ["CAULDRON"] = true,
-    ["SOULWELL"] = true,
-    ["REPAIR"] = true
+    ["feast"] = true,
+    ["cauldron"] = true,
+    ["soulwell"] = true,
+    ["repair"] = true
 }
-
--- Pre-compute lowercase keywords for case-insensitive matching
-local qol_lower_keywords = {}
-for keyword in pairs(QOL_NAMES_TABLE) do
-    table.insert(qol_lower_keywords, string.lower(keyword))
-end
-
 
 -- resolve user-defined abbreviations (key -> value replacements)
 function BetterNSTTS.resolve_abbreviations(text)
@@ -56,7 +49,7 @@ function BetterNSTTS.is_qol_message(message)
     end
 
     local lower_msg = string.lower(message)
-    for _, kw in ipairs(qol_lower_keywords) do
+    for kw, _ in pairs(QOL_NAMES_TABLE) do
         if string.find(lower_msg, kw, 1, true) then
             return true
         end
