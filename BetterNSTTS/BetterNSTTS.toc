@@ -1,7 +1,8 @@
 ## Title: Better Northen Sky TTS
+## X-Curse-Project-ID: 1528376
 ## X-Wago-ID: kNM35QKz
 ## Interface: 120001, 120005, 120000, 120007
-## Version: 4.1
+## Version: 5.0
 ## IconTexture: Interface\Icons\Inv_artifact_thalkielsdiscord
 ## Author: bigos
 ## Notes: A hook over Northen Sky Raid Tools allowing for replacing TTS calls with plaing appropriate ogg file (removing the necessity of using TTS)
