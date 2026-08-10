@@ -66,7 +66,7 @@ Yes, go ahead, please remember to include the .ogg file (preferably following th
 and update ```sounds.ogg``` file.
 
 # Can I post my personal exclusions via pull request?
-Sure, if those would be sensible exclusions I see on issue with that.
+Not needed anymore - the add-on allows you to add your own exclusions and abbreviations.
 
 # I have an idea on how to extend the add-on
 Great, either post a PR or contact me directly via GitHub or discord (https://discord.gg/SMPHz5CJRX). 
