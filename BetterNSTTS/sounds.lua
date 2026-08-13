@@ -138,4 +138,11 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["blazes"] = true,
 	["soaks"] = true,
 	["obelisk"] = true,
+	["frontal"] = true,
+	["shrooms"] = true,
+	["side"] = true,
+	["spawns"] = true,
+	["stack"] = true,
+	["taunt"] = true,
+	["watch"] = true,
 }
