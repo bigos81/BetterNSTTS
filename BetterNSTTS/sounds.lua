@@ -145,4 +145,6 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["stack"] = true,
 	["taunt"] = true,
 	["watch"] = true,
+	["dodge"] = true,
+	["waves"] = true,
 }

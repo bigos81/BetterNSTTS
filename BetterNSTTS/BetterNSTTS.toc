@@ -2,7 +2,7 @@
 ## X-Curse-Project-ID: 1528376
 ## X-Wago-ID: kNM35QKz
 ## Interface: 120100
-## Version: 5.3
+## Version: 5.4
 ## IconTexture: Interface\Icons\Inv_artifact_thalkielsdiscord
 ## Author: bigos
 ## Notes: A hook over Northen Sky Raid Tools allowing for replacing TTS calls with plaing appropriate ogg file (removing the necessity of using TTS)
