@@ -147,4 +147,5 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["watch"] = true,
 	["dodge"] = true,
 	["waves"] = true,
+	["aoe"] = true,
 }
