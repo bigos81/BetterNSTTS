@@ -148,4 +148,9 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["dodge"] = true,
 	["waves"] = true,
 	["aoe"] = true,
+	["break"] = true,
+	["first"] = true,
+	["platform"] = true,
+	["second"] = true,
+	["third"] = true,
 }
