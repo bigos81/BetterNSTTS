@@ -153,4 +153,8 @@ BetterNSTTS.BNSTTS_SOUNDS =  {
 	["platform"] = true,
 	["second"] = true,
 	["third"] = true,
+	["control"] = true,
+	["debuffs"] = true,
+	["defensive"] = true,
+	["mind"] = true,
 }
